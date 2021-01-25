@@ -1,0 +1,13 @@
+{:source-paths ["src"]
+ :dependencies [[binaryage/devtools "1.0.2"]
+                [nrepl "0.8.3"]
+                [reagent "1.0.0"]
+                [reanimated "0.6.1"]]
+ :builds       {:app {:target     :browser
+                      :output-dir "public/js"
+                      :asset-path "/js"
+                      :modules    {:app {:entries [metronome.core]}}
+                      :devtools   {:after-load metronome.core/mount-root}}}
+
+ :dev-http     {3000 {:root    "public"
+                      :handler user/app}}}
