@@ -1,12 +1,12 @@
 goog.provide('metronome.core');
-metronome.core.on_row_click = (function metronome$core$on_row_click(p__28803){
-var map__28804 = p__28803;
-var map__28804__$1 = (((((!((map__28804 == null))))?(((((map__28804.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__28804.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__28804):map__28804);
-var seconds = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28804__$1,new cljs.core.Keyword(null,"seconds","seconds",-445266194));
-var timer_fn = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28804__$1,new cljs.core.Keyword(null,"timer-fn","timer-fn",-731279340));
-var running = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28804__$1,new cljs.core.Keyword(null,"running","running",1554969103));
-var cadence = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28804__$1,new cljs.core.Keyword(null,"cadence","cadence",821204241));
-var reps = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28804__$1,new cljs.core.Keyword(null,"reps","reps",1391310856));
+metronome.core.on_row_click = (function metronome$core$on_row_click(p__28814){
+var map__28815 = p__28814;
+var map__28815__$1 = (((((!((map__28815 == null))))?(((((map__28815.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__28815.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__28815):map__28815);
+var seconds = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28815__$1,new cljs.core.Keyword(null,"seconds","seconds",-445266194));
+var timer_fn = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28815__$1,new cljs.core.Keyword(null,"timer-fn","timer-fn",-731279340));
+var running = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28815__$1,new cljs.core.Keyword(null,"running","running",1554969103));
+var cadence = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28815__$1,new cljs.core.Keyword(null,"cadence","cadence",821204241));
+var reps = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28815__$1,new cljs.core.Keyword(null,"reps","reps",1391310856));
 return (function (){
 if(cljs.core.truth_(cljs.core.deref(running))){
 clearInterval(cljs.core.deref(timer_fn));
@@ -38,18 +38,18 @@ return "bg-opacity-50";
 return "bg-opacity-75";
 }
 });
-metronome.core.counter_row = (function metronome$core$counter_row(p__28806){
-var map__28807 = p__28806;
-var map__28807__$1 = (((((!((map__28807 == null))))?(((((map__28807.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__28807.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__28807):map__28807);
-var desc = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28807__$1,new cljs.core.Keyword(null,"desc","desc",2093485764));
-var bg_color = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28807__$1,new cljs.core.Keyword(null,"bg-color","bg-color",455102491));
-var cadence = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28807__$1,new cljs.core.Keyword(null,"cadence","cadence",821204241));
-var with_let28809 = reagent.ratom.with_let_values(new cljs.core.Keyword(null,"with-let28809","with-let28809",-167922562));
-var temp__5739__auto___28811 = reagent.ratom._STAR_ratom_context_STAR_;
-if((temp__5739__auto___28811 == null)){
+metronome.core.counter_row = (function metronome$core$counter_row(p__28817){
+var map__28818 = p__28817;
+var map__28818__$1 = (((((!((map__28818 == null))))?(((((map__28818.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__28818.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__28818):map__28818);
+var desc = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28818__$1,new cljs.core.Keyword(null,"desc","desc",2093485764));
+var bg_color = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28818__$1,new cljs.core.Keyword(null,"bg-color","bg-color",455102491));
+var cadence = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28818__$1,new cljs.core.Keyword(null,"cadence","cadence",821204241));
+var with_let28820 = reagent.ratom.with_let_values(new cljs.core.Keyword(null,"with-let28820","with-let28820",267800721));
+var temp__5739__auto___28822 = reagent.ratom._STAR_ratom_context_STAR_;
+if((temp__5739__auto___28822 == null)){
 } else {
-var c__28532__auto___28812 = temp__5739__auto___28811;
-if((with_let28809.generation === c__28532__auto___28812.ratomGeneration)){
+var c__28532__auto___28823 = temp__5739__auto___28822;
+if((with_let28820.generation === c__28532__auto___28823.ratomGeneration)){
 if(reagent.debug.has_console){
 ((reagent.debug.tracking)?reagent.debug.track_console:console).error(["Warning: The same with-let is being used more ","than once in the same reactive context."].join(''));
 } else {
@@ -57,28 +57,28 @@ if(reagent.debug.has_console){
 } else {
 }
 
-(with_let28809.generation = c__28532__auto___28812.ratomGeneration);
+(with_let28820.generation = c__28532__auto___28823.ratomGeneration);
 }
 
 
-var init28810 = (with_let28809.length === (0));
-var seconds_elapsed = ((init28810)?(with_let28809[(0)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((0))):(with_let28809[(0)]));
-var running = ((init28810)?(with_let28809[(1)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1(false)):(with_let28809[(1)]));
-var timer_fn = ((init28810)?(with_let28809[(2)] = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(null)):(with_let28809[(2)]));
-var reps = ((init28810)?(with_let28809[(3)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((0))):(with_let28809[(3)]));
+var init28821 = (with_let28820.length === (0));
+var seconds_elapsed = ((init28821)?(with_let28820[(0)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((0))):(with_let28820[(0)]));
+var running = ((init28821)?(with_let28820[(1)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1(false)):(with_let28820[(1)]));
+var timer_fn = ((init28821)?(with_let28820[(2)] = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(null)):(with_let28820[(2)]));
+var reps = ((init28821)?(with_let28820[(3)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((0))):(with_let28820[(3)]));
 var res__28533__auto__ = (function (){
-return new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),["h-full flex flex-col flex-1 ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(bg_color)," ",metronome.core.get_bg_opacity(seconds_elapsed,cadence)," items-center justify-evenly"].join(''),new cljs.core.Keyword(null,"on-click","on-click",1632826543),metronome.core.on_row_click(new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"seconds","seconds",-445266194),seconds_elapsed,new cljs.core.Keyword(null,"timer-fn","timer-fn",-731279340),timer_fn,new cljs.core.Keyword(null,"running","running",1554969103),running,new cljs.core.Keyword(null,"cadence","cadence",821204241),cadence,new cljs.core.Keyword(null,"reps","reps",1391310856),reps], null))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"w-full text-9xl text-center text-gray-50 font-mono font-bold"], null),desc], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"w-full text-9xl text-center text-gray-50 font-mono font-bold"], null),["Reps: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(reps))].join('')], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"w-full text-9xl text-center text-gray-50 font-mono font-bold"], null),cljs.core.deref(seconds_elapsed)], null)], null);
+return new cljs.core.PersistentVector(null, 5, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),["h-full flex flex-col flex-1 ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(bg_color)," ",metronome.core.get_bg_opacity(seconds_elapsed,cadence)," items-center justify-evenly"].join(''),new cljs.core.Keyword(null,"on-click","on-click",1632826543),metronome.core.on_row_click(new cljs.core.PersistentArrayMap(null, 5, [new cljs.core.Keyword(null,"seconds","seconds",-445266194),seconds_elapsed,new cljs.core.Keyword(null,"timer-fn","timer-fn",-731279340),timer_fn,new cljs.core.Keyword(null,"running","running",1554969103),running,new cljs.core.Keyword(null,"cadence","cadence",821204241),cadence,new cljs.core.Keyword(null,"reps","reps",1391310856),reps], null))], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"w-full text-9xl text-center text-gray-50 font-mono font-bold"], null),desc], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"w-full text-9xl text-center text-gray-50 font-mono font-bold"], null),["Reps:",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(reps))].join('')], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p","p",151049309),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"w-full text-9xl text-center text-gray-50 font-mono font-bold"], null),cljs.core.deref(seconds_elapsed)], null)], null);
 });
-var destroy__28531__auto___28813 = (function (){
+var destroy__28531__auto___28824 = (function (){
 return clearInterval(timer_fn);
 });
 if(reagent.ratom.reactive_QMARK_()){
-if((with_let28809.destroy == null)){
-(with_let28809.destroy = destroy__28531__auto___28813);
+if((with_let28820.destroy == null)){
+(with_let28820.destroy = destroy__28531__auto___28824);
 } else {
 }
 } else {
-destroy__28531__auto___28813();
+destroy__28531__auto___28824();
 }
 
 return res__28533__auto__;

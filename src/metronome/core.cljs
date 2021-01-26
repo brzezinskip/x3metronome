@@ -45,7 +45,7 @@
                                                       :cadence  cadence
                                                       :reps     reps})}
                        [:p {:class "w-full text-9xl text-center text-gray-50 font-mono font-bold"} desc]
-                       [:p {:class "w-full text-9xl text-center text-gray-50 font-mono font-bold"} (str "Reps: " @reps)]
+                       [:p {:class "w-full text-9xl text-center text-gray-50 font-mono font-bold"} (str "Reps:" @reps)]
                        [:p {:class "w-full text-9xl text-center text-gray-50 font-mono font-bold"} @seconds-elapsed]])
                   (finally (js/clearInterval timer-fn))))
 
