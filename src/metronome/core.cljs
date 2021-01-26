@@ -38,15 +38,15 @@
                                             bg-color
                                             " "
                                             (get-bg-opacity seconds-elapsed cadence)
-                                            " items-center justify-evenly")
+                                            " justify-evenly")
                              :on-click (on-row-click {:seconds  seconds-elapsed
                                                       :timer-fn timer-fn
                                                       :running  running
                                                       :cadence  cadence
                                                       :reps     reps})}
-                       [:p {:class "w-full text-9xl text-center text-gray-50 font-mono font-bold"} desc]
-                       [:p {:class "w-full text-9xl text-center text-gray-50 font-mono font-bold"} (str "Reps:" @reps)]
-                       [:p {:class "w-full text-9xl text-center text-gray-50 font-mono font-bold"} @seconds-elapsed]])
+                       [:span {:class "text-4xl sm:text-4xl md:text-8xl lg:text-9xl text-center text-gray-50 font-mono font-bold"} desc]
+                       [:span {:class "text-4xl sm:text-4xl md:text-8xl lg:text-9xl text-center text-gray-50 font-mono font-bold"} (str "Reps:" @reps)]
+                       [:span {:class "text-4xl sm:text-4xl md:text-8xl lg:text-9xl text-center text-gray-50 font-mono font-bold"} @seconds-elapsed]])
                   (finally (js/clearInterval timer-fn))))
 
 (defn home-page []
