@@ -12,6 +12,7 @@
                      cadence :cadence
                      reps :reps}]
       (fn []
+          (js/window.speechSynthesis.speak (js/SpeechSynthesisUtterance. ""))
           (if @running (do (js/clearInterval @timer-fn) (reset! seconds 0) (reset! reps 0))
                        (reset! timer-fn (js/setInterval
                                           #(do
