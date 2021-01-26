@@ -56,8 +56,9 @@
                 :type      "checkbox"
                 :name      "Countdown?"
                 :checked   checked?
-                :on-change #()
-                :on-click on-change}]
+                :on-change on-change
+                :on-click #(.stopPropagation %)}
+                ]
        [:span {:class "text-gray-50 font-mono font-bold pt-1"} label]])
 
 (defn counter-row [{desc :desc bg-color :bg-color cadence :cadence}]
