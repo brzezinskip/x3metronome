@@ -8,20 +8,25 @@
 
 (defn on-row-click [{seconds  :seconds
                      timer-fn :timer-fn
-                     running :running
-                     cadence :cadence
-                     reps :reps}]
+                     running  :running
+                     cadence  :cadence
+                     reps     :reps}]
       (fn []
-          (js/window.speechSynthesis.speak (js/SpeechSynthesisUtterance. ""))
-          (if @running (do (js/clearInterval @timer-fn) (reset! seconds 0) (reset! reps 0))
-                       (reset! timer-fn (js/setInterval
-                                          #(do
-                                             (if (= @seconds cadence)
-                                               (do (reset! seconds 1)
-                                                   (swap! reps inc))
-                                               (swap! seconds inc))
-                                             (js/window.speechSynthesis.speak (js/SpeechSynthesisUtterance. @seconds))) 1000)))
-          (reset! running (not @running))
+          (let [speak (fn [phrase] (js/window.speechSynthesis.speak (js/SpeechSynthesisUtterance. phrase)))]
+               (speak "")
+               (if @running (do (js/clearInterval @timer-fn) (reset! seconds 0) (reset! reps 0))
+                            (reset!
+                              timer-fn
+                              (js/setInterval
+                                #(do
+                                   (if (= @seconds cadence)
+                                     (do (reset! seconds 1)
+                                         (swap! reps inc))
+                                     (swap! seconds inc))
+                                   (speak @seconds)) 1000)))
+               (reset! running (not @running))
+               )
+
           ))
 
 (defn get-bg-opacity [seconds cadence]
