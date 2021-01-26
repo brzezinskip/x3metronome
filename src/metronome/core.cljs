@@ -95,10 +95,11 @@
 (defn home-page []
   [:div {:class "w-screen h-screen flex flex-col"}
    [:header {:class "h-20 bg-gray-800 flex flex-row w-fill px-10"}
-    [:span {:class "self-center justify-self-center text-gray-300 flex flex-row flex-1 font-medium text-center"}
-     "X3 METRONOME"]
-    [:span {:class "self-center text-center text-gray-300 flex-1 font-medium"} "TAP TO START"]
-    [:div {:class "self-center justify-self-end flex-1 text-right"}]]
+    [:span {:class "self-center items-center justify-self-center text-gray-300 flex flex-row flex-1 font-medium text-center"}
+     [:img {:src "images/stopwatch-solid.svg" :width 40 :height 40 :class "mr-5"}]
+     [:span {:class "invisible sm:visible md:visible lg:visible text-gray-300 text-center"} "X3 METRONOME"]]
+    [:span {:class "self-center text-left md:text-center text-gray-300 flex-1 font-medium"} "TAP TO START"]
+    [:div {:class "self-center justify-self-end flex-1 text-right"} ""]]
    [counter-row {:desc "2U2D" :bg-color "bg-purple-600" :cadence 4}]
    [counter-row {:desc "3U3D" :bg-color "bg-red-600" :cadence 6}]])
 
