@@ -5,6 +5,8 @@
 
 (def click-sound (js/Audio.))
 (.play click-sound)
+(or (.-AudioContext js/window) (.-webkitAudioContext js/window))
+(js/AudioContext.)
 
 (defn stop-counting ([timer-fn seconds reps countdown? countdown-value latest-reps]
                      (js/clearInterval @timer-fn)
@@ -42,6 +44,7 @@
                      countdown-value :countdown-value
                      latest-reps     :latest-reps}]
   (fn []
+    (set! (.-src click-sound) "sounds/snap.wav")
     (let [click #(.play click-sound)]
       (if @running (stop-counting timer-fn seconds reps countdown? countdown-value latest-reps)
           (start-counting timer-fn countdown? countdown-value seconds cadence reps click))
@@ -100,7 +103,6 @@
     (finally (js/clearInterval timer-fn))))
 
 (defn home-page []
-  (set! (.-src click-sound) "sounds/snap.wav")
   [:div {:class "w-screen h-screen flex flex-col"}
    [:header {:class "bg-gray-800 flex flex-row w-fill px-10 py-5"}
     [:span {:class "self-center items-center justify-self-center text-gray-300 flex flex-row flex-1 font-medium text-center"}
