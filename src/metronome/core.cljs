@@ -2,32 +2,34 @@
   (:require
    [reagent.core :as r]
    [reagent.dom :as d]))
+(def click-sound (js/Audio. "sounds/snap.wav"))
 
-(defn clear-interval [timer-fn seconds reps countdown? countdown-value]
-  (do (js/clearInterval @timer-fn)
-      (reset! seconds 0)
-      (reset! reps 0)
-      (reset! countdown? false)
-      (reset! countdown-value 3)))
+(defn stop-counting ([timer-fn seconds reps countdown? countdown-value latest-reps]
+                     (js/clearInterval @timer-fn)
+                     (reset! seconds 0)
+                     (reset! latest-reps @reps)
+                     (reset! reps 0)
+                     (reset! countdown? false)
+                     (reset! countdown-value 3)))
 
-(defn start-counting [timer-fn countdown? countdown-value seconds cadence reps speak]
+(defn start-counting [timer-fn countdown? countdown-value seconds cadence reps click]
   (reset! timer-fn
           (js/setInterval
            #(do
               (if (and @countdown? (not (zero? (inc @countdown-value))))
                 (do
-                  (speak @countdown-value)
+                  (click)
                   (swap! countdown-value dec)
                   (if (zero? @countdown-value)
                     (reset! seconds 0)))
                 (if (= @seconds cadence)
                   (do
-                    (speak 1)
+                    (click)
                     (reset! seconds 1)
                     (swap! reps inc))
                   (do
                     (swap! seconds inc)
-                    (speak @seconds))))) 1000)))
+                    (click))))) 1000)))
 
 (defn on-row-click [{seconds         :seconds
                      timer-fn        :timer-fn
@@ -35,12 +37,12 @@
                      cadence         :cadence
                      reps            :reps
                      countdown?      :countdown?
-                     countdown-value :countdown-value}]
+                     countdown-value :countdown-value
+                     latest-reps     :latest-reps}]
   (fn []
-    (let [speak (fn [phrase] (js/window.speechSynthesis.speak (js/SpeechSynthesisUtterance. phrase)))]
-      (speak "")
-      (if @running (clear-interval timer-fn seconds reps countdown? countdown-value)
-          (start-counting timer-fn countdown? countdown-value seconds cadence reps speak))
+    (let [click #(.play click-sound)]
+      (if @running (stop-counting timer-fn seconds reps countdown? countdown-value latest-reps)
+          (start-counting timer-fn countdown? countdown-value seconds cadence reps click))
       (reset! running (not @running)))))
 
 (defn get-bg-opacity [seconds cadence]
@@ -49,7 +51,7 @@
     "bg-opacity-75"))
 
 (def text-classes
-  "text-4xl sm:text-4xl md:text-8xl lg:text-8xl text-center text-gray-50 font-mono font-bold")
+  "text-4xl sm:text-4xl md:text-8xl lg:text-8xl text-center text-gray-50 font-mono font-bold flex-1")
 
 (defn text [value]
   [:span {:class text-classes} value])
@@ -70,9 +72,10 @@
                timer-fn (atom nil)
                reps (r/atom 0)
                countdown? (r/atom false)
-               countdown-value (r/atom 3)]
+               countdown-value (r/atom 3)
+               latest-reps (r/atom 0)]
     (fn []
-      [:div {:class    (str "h-full flex flex-col flex-1 "
+      [:div {:class    (str "h-full flex flex-col flex-1 py-10 "
                             bg-color
                             " "
                             (get-bg-opacity seconds-elapsed cadence)
@@ -83,18 +86,20 @@
                                       :cadence         cadence
                                       :reps            reps
                                       :countdown?      countdown?
-                                      :countdown-value countdown-value})}
+                                      :countdown-value countdown-value
+                                      :latest-reps latest-reps})}
+       (if-not (zero? @latest-reps) [:p.text-2xl.sm:text-2xl.md:text-6xl.lg:text-6xl.text-center.text-gray-200.font-mono.font-bold.border-2.m-4.mx-14.rounded.p-1 (str "Last reps: " @latest-reps)])
        (text desc)
        (text (str "Reps:" @reps))
        (text @seconds-elapsed)
-       (checkbox "Countdown?"
+       (checkbox "Countdown? (4 ticks)"
                  @countdown?
                  #(.stopPropagation % (reset! countdown? (not @countdown?))))])
     (finally (js/clearInterval timer-fn))))
 
 (defn home-page []
   [:div {:class "w-screen h-screen flex flex-col"}
-   [:header {:class "h-20 bg-gray-800 flex flex-row w-fill px-10"}
+   [:header {:class "bg-gray-800 flex flex-row w-fill px-10 py-5"}
     [:span {:class "self-center items-center justify-self-center text-gray-300 flex flex-row flex-1 font-medium text-center"}
      [:img {:src "images/stopwatch-solid.svg" :width 40 :height 40 :class "mr-0 md:mr-5"}]
      [:span {:class "invisible sm:visible md:visible lg:visible text-gray-300 text-center"} "X3 METRONOME"]]
