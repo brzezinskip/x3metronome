@@ -3,6 +3,10 @@
    [reagent.core :as r]
    [reagent.dom :as d]))
 
+(def click-sound (js/Audio.))
+(.play click-sound)
+(set! (.-src click-sound) "sounds/snap.wav")
+
 (defn stop-counting ([timer-fn seconds reps countdown? countdown-value latest-reps]
                      (js/clearInterval @timer-fn)
                      (reset! seconds 0)
@@ -39,7 +43,7 @@
                      countdown-value :countdown-value
                      latest-reps     :latest-reps}]
   (fn []
-    (let [click-sound (js/Audio. "sounds/snap.wav") click #(.play click-sound)]
+    (let [click #(.play click-sound)]
       (if @running (stop-counting timer-fn seconds reps countdown? countdown-value latest-reps)
           (start-counting timer-fn countdown? countdown-value seconds cadence reps click))
       (reset! running (not @running)))))

@@ -1,4 +1,6 @@
 goog.provide('metronome.core');
+metronome.core.click_sound = (new Audio());
+metronome.core.click_sound.play();
 metronome.core.stop_counting = (function metronome$core$stop_counting(timer_fn,seconds,reps,countdown_QMARK_,countdown_value,latest_reps){
 clearInterval(cljs.core.deref(timer_fn));
 
@@ -45,21 +47,22 @@ return (click.cljs$core$IFn$_invoke$arity$0 ? click.cljs$core$IFn$_invoke$arity$
 }
 }),(1000)));
 });
-metronome.core.on_row_click = (function metronome$core$on_row_click(p__28560){
-var map__28561 = p__28560;
-var map__28561__$1 = (((((!((map__28561 == null))))?(((((map__28561.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__28561.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__28561):map__28561);
-var seconds = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28561__$1,new cljs.core.Keyword(null,"seconds","seconds",-445266194));
-var timer_fn = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28561__$1,new cljs.core.Keyword(null,"timer-fn","timer-fn",-731279340));
-var running = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28561__$1,new cljs.core.Keyword(null,"running","running",1554969103));
-var cadence = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28561__$1,new cljs.core.Keyword(null,"cadence","cadence",821204241));
-var reps = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28561__$1,new cljs.core.Keyword(null,"reps","reps",1391310856));
-var countdown_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28561__$1,new cljs.core.Keyword(null,"countdown?","countdown?",-1555952325));
-var countdown_value = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28561__$1,new cljs.core.Keyword(null,"countdown-value","countdown-value",-908866158));
-var latest_reps = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28561__$1,new cljs.core.Keyword(null,"latest-reps","latest-reps",-1859956773));
+metronome.core.on_row_click = (function metronome$core$on_row_click(p__28672){
+var map__28673 = p__28672;
+var map__28673__$1 = (((((!((map__28673 == null))))?(((((map__28673.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__28673.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__28673):map__28673);
+var seconds = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28673__$1,new cljs.core.Keyword(null,"seconds","seconds",-445266194));
+var timer_fn = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28673__$1,new cljs.core.Keyword(null,"timer-fn","timer-fn",-731279340));
+var running = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28673__$1,new cljs.core.Keyword(null,"running","running",1554969103));
+var cadence = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28673__$1,new cljs.core.Keyword(null,"cadence","cadence",821204241));
+var reps = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28673__$1,new cljs.core.Keyword(null,"reps","reps",1391310856));
+var countdown_QMARK_ = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28673__$1,new cljs.core.Keyword(null,"countdown?","countdown?",-1555952325));
+var countdown_value = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28673__$1,new cljs.core.Keyword(null,"countdown-value","countdown-value",-908866158));
+var latest_reps = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28673__$1,new cljs.core.Keyword(null,"latest-reps","latest-reps",-1859956773));
 return (function (){
-var click_sound = (new Audio("sounds/snap.wav"));
+(metronome.core.click_sound.src = "sounds/snap.wav");
+
 var click = (function (){
-return click_sound.play();
+return metronome.core.click_sound.play();
 });
 if(cljs.core.truth_(cljs.core.deref(running))){
 metronome.core.stop_counting(timer_fn,seconds,reps,countdown_QMARK_,countdown_value,latest_reps);
@@ -82,22 +85,22 @@ metronome.core.text = (function metronome$core$text(value){
 return new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),metronome.core.text_classes], null),value], null);
 });
 metronome.core.checkbox = (function metronome$core$checkbox(label,checked_QMARK_,on_change){
-return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"flex flex-row self-center"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"class","class",-2030961996),"self-center justify-self-end mr-2 w-5 h-5",new cljs.core.Keyword(null,"type","type",1174270348),"checkbox",new cljs.core.Keyword(null,"name","name",1843675177),"Countdown?",new cljs.core.Keyword(null,"checked","checked",-50955819),checked_QMARK_,new cljs.core.Keyword(null,"on-change","on-change",-732046149),on_change,new cljs.core.Keyword(null,"on-click","on-click",1632826543),(function (p1__28563_SHARP_){
-return p1__28563_SHARP_.stopPropagation();
+return new cljs.core.PersistentVector(null, 4, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"flex flex-row self-center"], null),new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"input","input",556931961),new cljs.core.PersistentArrayMap(null, 6, [new cljs.core.Keyword(null,"class","class",-2030961996),"self-center justify-self-end mr-2 w-5 h-5",new cljs.core.Keyword(null,"type","type",1174270348),"checkbox",new cljs.core.Keyword(null,"name","name",1843675177),"Countdown?",new cljs.core.Keyword(null,"checked","checked",-50955819),checked_QMARK_,new cljs.core.Keyword(null,"on-change","on-change",-732046149),on_change,new cljs.core.Keyword(null,"on-click","on-click",1632826543),(function (p1__28675_SHARP_){
+return p1__28675_SHARP_.stopPropagation();
 })], null)], null),new cljs.core.PersistentVector(null, 3, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"span","span",1394872991),new cljs.core.PersistentArrayMap(null, 1, [new cljs.core.Keyword(null,"class","class",-2030961996),"text-gray-50 font-mono font-bold pt-1"], null),label], null)], null);
 });
-metronome.core.counter_row = (function metronome$core$counter_row(p__28565){
-var map__28566 = p__28565;
-var map__28566__$1 = (((((!((map__28566 == null))))?(((((map__28566.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__28566.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__28566):map__28566);
-var desc = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28566__$1,new cljs.core.Keyword(null,"desc","desc",2093485764));
-var bg_color = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28566__$1,new cljs.core.Keyword(null,"bg-color","bg-color",455102491));
-var cadence = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28566__$1,new cljs.core.Keyword(null,"cadence","cadence",821204241));
-var with_let28568 = reagent.ratom.with_let_values(new cljs.core.Keyword(null,"with-let28568","with-let28568",405359281));
-var temp__5739__auto___28570 = reagent.ratom._STAR_ratom_context_STAR_;
-if((temp__5739__auto___28570 == null)){
+metronome.core.counter_row = (function metronome$core$counter_row(p__28677){
+var map__28678 = p__28677;
+var map__28678__$1 = (((((!((map__28678 == null))))?(((((map__28678.cljs$lang$protocol_mask$partition0$ & (64))) || ((cljs.core.PROTOCOL_SENTINEL === map__28678.cljs$core$ISeq$))))?true:false):false))?cljs.core.apply.cljs$core$IFn$_invoke$arity$2(cljs.core.hash_map,map__28678):map__28678);
+var desc = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28678__$1,new cljs.core.Keyword(null,"desc","desc",2093485764));
+var bg_color = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28678__$1,new cljs.core.Keyword(null,"bg-color","bg-color",455102491));
+var cadence = cljs.core.get.cljs$core$IFn$_invoke$arity$2(map__28678__$1,new cljs.core.Keyword(null,"cadence","cadence",821204241));
+var with_let28680 = reagent.ratom.with_let_values(new cljs.core.Keyword(null,"with-let28680","with-let28680",1553758285));
+var temp__5739__auto___28682 = reagent.ratom._STAR_ratom_context_STAR_;
+if((temp__5739__auto___28682 == null)){
 } else {
-var c__28532__auto___28571 = temp__5739__auto___28570;
-if((with_let28568.generation === c__28532__auto___28571.ratomGeneration)){
+var c__28532__auto___28683 = temp__5739__auto___28682;
+if((with_let28680.generation === c__28532__auto___28683.ratomGeneration)){
 if(reagent.debug.has_console){
 ((reagent.debug.tracking)?reagent.debug.track_console:console).error(["Warning: The same with-let is being used more ","than once in the same reactive context."].join(''));
 } else {
@@ -105,33 +108,33 @@ if(reagent.debug.has_console){
 } else {
 }
 
-(with_let28568.generation = c__28532__auto___28571.ratomGeneration);
+(with_let28680.generation = c__28532__auto___28683.ratomGeneration);
 }
 
 
-var init28569 = (with_let28568.length === (0));
-var seconds_elapsed = ((init28569)?(with_let28568[(0)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((0))):(with_let28568[(0)]));
-var running = ((init28569)?(with_let28568[(1)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1(false)):(with_let28568[(1)]));
-var timer_fn = ((init28569)?(with_let28568[(2)] = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(null)):(with_let28568[(2)]));
-var reps = ((init28569)?(with_let28568[(3)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((0))):(with_let28568[(3)]));
-var countdown_QMARK_ = ((init28569)?(with_let28568[(4)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1(false)):(with_let28568[(4)]));
-var countdown_value = ((init28569)?(with_let28568[(5)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((3))):(with_let28568[(5)]));
-var latest_reps = ((init28569)?(with_let28568[(6)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((0))):(with_let28568[(6)]));
+var init28681 = (with_let28680.length === (0));
+var seconds_elapsed = ((init28681)?(with_let28680[(0)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((0))):(with_let28680[(0)]));
+var running = ((init28681)?(with_let28680[(1)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1(false)):(with_let28680[(1)]));
+var timer_fn = ((init28681)?(with_let28680[(2)] = cljs.core.atom.cljs$core$IFn$_invoke$arity$1(null)):(with_let28680[(2)]));
+var reps = ((init28681)?(with_let28680[(3)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((0))):(with_let28680[(3)]));
+var countdown_QMARK_ = ((init28681)?(with_let28680[(4)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1(false)):(with_let28680[(4)]));
+var countdown_value = ((init28681)?(with_let28680[(5)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((3))):(with_let28680[(5)]));
+var latest_reps = ((init28681)?(with_let28680[(6)] = reagent.core.atom.cljs$core$IFn$_invoke$arity$1((0))):(with_let28680[(6)]));
 var res__28533__auto__ = (function (){
-return new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),["h-full flex flex-col flex-1 py-10 sm:py-2 md:py-2 lg:py-2 ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(bg_color)," ",metronome.core.get_bg_opacity(seconds_elapsed,cadence)," justify-evenly"].join(''),new cljs.core.Keyword(null,"on-click","on-click",1632826543),metronome.core.on_row_click(new cljs.core.PersistentArrayMap(null, 8, [new cljs.core.Keyword(null,"seconds","seconds",-445266194),seconds_elapsed,new cljs.core.Keyword(null,"timer-fn","timer-fn",-731279340),timer_fn,new cljs.core.Keyword(null,"running","running",1554969103),running,new cljs.core.Keyword(null,"cadence","cadence",821204241),cadence,new cljs.core.Keyword(null,"reps","reps",1391310856),reps,new cljs.core.Keyword(null,"countdown?","countdown?",-1555952325),countdown_QMARK_,new cljs.core.Keyword(null,"countdown-value","countdown-value",-908866158),countdown_value,new cljs.core.Keyword(null,"latest-reps","latest-reps",-1859956773),latest_reps], null))], null),(((!((cljs.core.deref(latest_reps) === (0)))))?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p.text-2xl.sm:text-2xl.md:text-6xl.lg:text-6xl.text-center.text-gray-200.font-mono.font-bold.border-2.m-4.mx-14.rounded.p-1","p.text-2xl.sm:text-2xl.md:text-6xl.lg:text-6xl.text-center.text-gray-200.font-mono.font-bold.border-2.m-4.mx-14.rounded.p-1",2112403954),["Last reps: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(latest_reps))].join('')], null):null),metronome.core.text(desc),metronome.core.text(["Reps:",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(reps))].join('')),metronome.core.text(cljs.core.deref(seconds_elapsed)),metronome.core.checkbox("Countdown? (4 ticks)",cljs.core.deref(countdown_QMARK_),(function (p1__28564_SHARP_){
-return p1__28564_SHARP_.stopPropagation(cljs.core.reset_BANG_(countdown_QMARK_,cljs.core.not(cljs.core.deref(countdown_QMARK_))));
+return new cljs.core.PersistentVector(null, 7, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"div","div",1057191632),new cljs.core.PersistentArrayMap(null, 2, [new cljs.core.Keyword(null,"class","class",-2030961996),["h-full flex flex-col flex-1 py-10 sm:py-2 md:py-2 lg:py-2 ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(bg_color)," ",metronome.core.get_bg_opacity(seconds_elapsed,cadence)," justify-evenly"].join(''),new cljs.core.Keyword(null,"on-click","on-click",1632826543),metronome.core.on_row_click(new cljs.core.PersistentArrayMap(null, 8, [new cljs.core.Keyword(null,"seconds","seconds",-445266194),seconds_elapsed,new cljs.core.Keyword(null,"timer-fn","timer-fn",-731279340),timer_fn,new cljs.core.Keyword(null,"running","running",1554969103),running,new cljs.core.Keyword(null,"cadence","cadence",821204241),cadence,new cljs.core.Keyword(null,"reps","reps",1391310856),reps,new cljs.core.Keyword(null,"countdown?","countdown?",-1555952325),countdown_QMARK_,new cljs.core.Keyword(null,"countdown-value","countdown-value",-908866158),countdown_value,new cljs.core.Keyword(null,"latest-reps","latest-reps",-1859956773),latest_reps], null))], null),(((!((cljs.core.deref(latest_reps) === (0)))))?new cljs.core.PersistentVector(null, 2, 5, cljs.core.PersistentVector.EMPTY_NODE, [new cljs.core.Keyword(null,"p.text-2xl.sm:text-2xl.md:text-6xl.lg:text-6xl.text-center.text-gray-200.font-mono.font-bold.border-2.m-4.mx-14.rounded.p-1","p.text-2xl.sm:text-2xl.md:text-6xl.lg:text-6xl.text-center.text-gray-200.font-mono.font-bold.border-2.m-4.mx-14.rounded.p-1",2112403954),["Last reps: ",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(latest_reps))].join('')], null):null),metronome.core.text(desc),metronome.core.text(["Reps:",cljs.core.str.cljs$core$IFn$_invoke$arity$1(cljs.core.deref(reps))].join('')),metronome.core.text(cljs.core.deref(seconds_elapsed)),metronome.core.checkbox("Countdown? (4 ticks)",cljs.core.deref(countdown_QMARK_),(function (p1__28676_SHARP_){
+return p1__28676_SHARP_.stopPropagation(cljs.core.reset_BANG_(countdown_QMARK_,cljs.core.not(cljs.core.deref(countdown_QMARK_))));
 }))], null);
 });
-var destroy__28531__auto___28572 = (function (){
+var destroy__28531__auto___28684 = (function (){
 return clearInterval(timer_fn);
 });
 if(reagent.ratom.reactive_QMARK_()){
-if((with_let28568.destroy == null)){
-(with_let28568.destroy = destroy__28531__auto___28572);
+if((with_let28680.destroy == null)){
+(with_let28680.destroy = destroy__28531__auto___28684);
 } else {
 }
 } else {
-destroy__28531__auto___28572();
+destroy__28531__auto___28684();
 }
 
 return res__28533__auto__;
