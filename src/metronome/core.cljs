@@ -5,7 +5,6 @@
 
 (def click-sound (js/Audio.))
 (.play click-sound)
-(set! (.-src click-sound) "sounds/snap.wav")
 
 (defn stop-counting ([timer-fn seconds reps countdown? countdown-value latest-reps]
                      (js/clearInterval @timer-fn)
@@ -101,6 +100,7 @@
     (finally (js/clearInterval timer-fn))))
 
 (defn home-page []
+  (set! (.-src click-sound) "sounds/snap.wav")
   [:div {:class "w-screen h-screen flex flex-col"}
    [:header {:class "bg-gray-800 flex flex-row w-fill px-10 py-5"}
     [:span {:class "self-center items-center justify-self-center text-gray-300 flex flex-row flex-1 font-medium text-center"}
