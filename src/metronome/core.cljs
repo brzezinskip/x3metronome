@@ -75,7 +75,7 @@
                countdown-value (r/atom 3)
                latest-reps (r/atom 0)]
     (fn []
-      [:div {:class    (str "h-full flex flex-col flex-1 py-10 "
+      [:div {:class    (str "h-full flex flex-col flex-1 py-10 sm:py-2 md:py-2 lg:py-2 "
                             bg-color
                             " "
                             (get-bg-opacity seconds-elapsed cadence)
