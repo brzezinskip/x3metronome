@@ -2,7 +2,6 @@
   (:require
    [reagent.core :as r]
    [reagent.dom :as d]))
-(def click-sound (js/Audio. "sounds/snap.wav"))
 
 (defn stop-counting ([timer-fn seconds reps countdown? countdown-value latest-reps]
                      (js/clearInterval @timer-fn)
@@ -40,7 +39,7 @@
                      countdown-value :countdown-value
                      latest-reps     :latest-reps}]
   (fn []
-    (let [click #(.play click-sound)]
+    (let [click-sound (js/Audio. "sounds/snap.wav") click #(.play click-sound)]
       (if @running (stop-counting timer-fn seconds reps countdown? countdown-value latest-reps)
           (start-counting timer-fn countdown? countdown-value seconds cadence reps click))
       (reset! running (not @running)))))
@@ -105,6 +104,7 @@
      [:span {:class "invisible sm:visible md:visible lg:visible text-gray-300 text-center"} "X3 METRONOME"]]
     [:span {:class "self-center text-center text-gray-300 font-medium flex-1"} "TAP TO START"]
     [:div {:class "self-center justify-self-end flex-1 text-right"} ""]]
+
    [counter-row {:desc "2U2D" :bg-color "bg-purple-600" :cadence 4}]
    [counter-row {:desc "3U3D" :bg-color "bg-red-600" :cadence 6}]])
 
